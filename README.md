@@ -1,3 +1,19 @@
+# Horse Stats Mod (custom fork)
+
+This is a personal fork of **[Horse Stats Mod](https://github.com/lilgallon/HorseStatsMod)** by **lilgallon**. All credit for the original mod goes to lilgallon.
+
+The fork is licensed under the **GNU GPL v3.0**, the same as the original (see `LICENSE`). Every change is listed below and in the commit history. It was made for personal use and is not an official release.
+
+## Branches
+- `26.3`: Minecraft 26.3, built on upstream tag `3.6.0-MC26.3-fabric`.
+- `1.21.11`: Minecraft 1.21.11, built on upstream tag `3.4.0-MC1.21.11-fabric`.
+
+## What this fork changes
+- **Longer stats overlay:** the horse stats stay on screen longer. Two new settings: one turns the longer display on or off (default on), the other sets how many seconds it stays (default 10). Only the Fabric config screen (Cloth Config) shows them.
+
+---
+
+*The original README follows.*
 # [Horse Stats Mod](https://github.com/lilgallon/HorseStatsMod)
 ![logo](https://github.com/lilgallon/HorseStatsMod/raw/MC_1.19.x/.github/resources/horsestatsmod.png)
 
