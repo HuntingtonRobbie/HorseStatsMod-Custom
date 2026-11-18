@@ -40,5 +40,7 @@
   "text.autoconfig.horsestatsmod.option.modConfig.displayStatsAboveHead.WHEN_LOOKING": "When looking at it",
   "text.autoconfig.horsestatsmod.option.modConfig.displayStatsAboveHead.ALWAYS": "Always",
   "text.autoconfig.horsestatsmod.option.modConfig.displayStatsAboveHead.DISABLED": "Disabled",
+  "text.autoconfig.horsestatsmod.option.modConfig.extendOverlayDuration": "Keep the stats on screen longer",
+  "text.autoconfig.horsestatsmod.option.modConfig.overlayDurationSeconds": "How long to show the stats (seconds, 1-300)",
   "horsestatsmod.configuration.reset": "Reset"
 }

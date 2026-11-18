@@ -18,6 +18,10 @@ public class ModConfig {
         static final GroupedKind GROUPED_STATS = GroupedKind.INDIVIDUAL;
         static final Boolean INCLUDE_ATTRIBUTE_MODIFIERS = true;
         static final AboveHeadKind DISPLAY_STATS_ABOVE_HEAD = AboveHeadKind.DISABLED;
+        static final Boolean EXTEND_OVERLAY_DURATION = true;
+        static final Integer OVERLAY_DURATION_SECONDS = 10;
+        static final int MIN_OVERLAY_DURATION_SECONDS = 1;
+        static final int MAX_OVERLAY_DURATION_SECONDS = 300;
     }
 
     private Boolean displayStatsInInventory = Defaults.DISPLAY_STATS_IN_INVENTORY;
@@ -28,6 +32,8 @@ public class ModConfig {
     private GroupedKind groupedStats = Defaults.GROUPED_STATS;
     private Boolean includeAttributeModifiers = Defaults.INCLUDE_ATTRIBUTE_MODIFIERS;
     private AboveHeadKind displayStatsAboveHead = Defaults.DISPLAY_STATS_ABOVE_HEAD;
+    private Boolean extendOverlayDuration = Defaults.EXTEND_OVERLAY_DURATION;
+    private Integer overlayDurationSeconds = Defaults.OVERLAY_DURATION_SECONDS;
 
     public @NotNull Boolean getDisplayStatsInInventory() {
         return Objects.requireNonNullElse(displayStatsInInventory, Defaults.DISPLAY_STATS_IN_INVENTORY);
@@ -108,6 +114,33 @@ public class ModConfig {
         );
     }
 
+    public @NotNull Boolean getExtendOverlayDuration() {
+        return Objects.requireNonNullElse(extendOverlayDuration, Defaults.EXTEND_OVERLAY_DURATION);
+    }
+
+    public void setExtendOverlayDuration(@NotNull Boolean extendOverlayDuration) {
+        this.extendOverlayDuration = Objects.requireNonNullElse(
+                extendOverlayDuration,
+                Defaults.EXTEND_OVERLAY_DURATION
+        );
+    }
+
+    /**
+     * Seconds the interaction overlay stays on screen when {@link #getExtendOverlayDuration()} is on,
+     * clamped to 1-300.
+     */
+    public @NotNull Integer getOverlayDurationSeconds() {
+        int seconds = Objects.requireNonNullElse(overlayDurationSeconds, Defaults.OVERLAY_DURATION_SECONDS);
+        return Math.max(Defaults.MIN_OVERLAY_DURATION_SECONDS, Math.min(Defaults.MAX_OVERLAY_DURATION_SECONDS, seconds));
+    }
+
+    public void setOverlayDurationSeconds(@NotNull Integer overlayDurationSeconds) {
+        this.overlayDurationSeconds = Objects.requireNonNullElse(
+                overlayDurationSeconds,
+                Defaults.OVERLAY_DURATION_SECONDS
+        );
+    }
+
     /**
      * Replaces entries that a config serializer could not read with their defaults.
      */
@@ -120,5 +153,7 @@ public class ModConfig {
         setGroupedStats(groupedStats);
         setIncludeAttributeModifiers(includeAttributeModifiers);
         setDisplayStatsAboveHead(displayStatsAboveHead);
+        setExtendOverlayDuration(extendOverlayDuration);
+        setOverlayDurationSeconds(overlayDurationSeconds);
     }
 }

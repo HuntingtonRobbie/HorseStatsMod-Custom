@@ -12,8 +12,12 @@ final class OverlayState {
     private int remainingTicks;
 
     void show(@NotNull Component message) {
+        show(message, DISPLAY_TICKS);
+    }
+
+    void show(@NotNull Component message, int displayTicks) {
         this.message = Optional.of(message);
-        this.remainingTicks = DISPLAY_TICKS;
+        this.remainingTicks = displayTicks;
     }
 
     void tick() {

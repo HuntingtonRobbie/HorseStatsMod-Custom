@@ -99,7 +99,13 @@ public final class HorseStatsMod {
 
     private void displayHorseStats(@NotNull AbstractHorse horse) {
         getHorseStats(horse, config.getIncludeAttributeModifiers())
-                .ifPresent(stats -> overlayState.show(buildOverlayMessage(config, stats)));
+                .ifPresent(stats -> overlayState.show(buildOverlayMessage(config, stats), overlayDisplayTicks()));
+    }
+
+    private int overlayDisplayTicks() {
+        return config.getExtendOverlayDuration()
+                ? config.getOverlayDurationSeconds() * 20
+                : OverlayState.DISPLAY_TICKS;
     }
 
     public void onClientTick() {

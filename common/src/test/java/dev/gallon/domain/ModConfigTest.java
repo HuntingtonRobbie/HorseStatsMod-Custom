@@ -46,6 +46,19 @@ class ModConfigTest {
         assertEquals(GroupedKind.INDIVIDUAL, config.getGroupedStats());
         assertTrue(config.getIncludeAttributeModifiers());
         assertEquals(AboveHeadKind.DISABLED, config.getDisplayStatsAboveHead());
+        assertTrue(config.getExtendOverlayDuration());
+        assertEquals(10, config.getOverlayDurationSeconds());
+    }
+
+    @Test
+    void clampsTheOverlayDurationToOneToThreeHundredSeconds() {
+        ModConfig config = new ModConfig();
+
+        config.setOverlayDurationSeconds(0);
+        assertEquals(1, config.getOverlayDurationSeconds());
+
+        config.setOverlayDurationSeconds(1000);
+        assertEquals(300, config.getOverlayDurationSeconds());
     }
 
     @Test
