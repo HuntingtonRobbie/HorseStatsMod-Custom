@@ -9,6 +9,24 @@ public class ModConfig {
     private @NotNull DisplayMinMax displayMinMax = DisplayMinMax.DISABLED;
     private @NotNull Boolean displayStatsInPercentage = false;
     private @NotNull GroupedKind groupedStats = GroupedKind.INDIVIDUAL;
+    private @NotNull Boolean extendOverlayDuration = true;
+    private @NotNull Integer overlayDurationSeconds = 10;
+
+    public @NotNull Boolean getExtendOverlayDuration() {
+        return extendOverlayDuration;
+    }
+
+    public void setExtendOverlayDuration(@NotNull Boolean extendOverlayDuration) {
+        this.extendOverlayDuration = extendOverlayDuration;
+    }
+
+    public @NotNull Integer getOverlayDurationSeconds() {
+        return overlayDurationSeconds;
+    }
+
+    public void setOverlayDurationSeconds(@NotNull Integer overlayDurationSeconds) {
+        this.overlayDurationSeconds = overlayDurationSeconds;
+    }
 
     public @NotNull Boolean getDisplayStatsInInventory() {
         return displayStatsInInventory;

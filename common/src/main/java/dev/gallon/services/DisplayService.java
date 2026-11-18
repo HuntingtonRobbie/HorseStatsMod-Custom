@@ -5,8 +5,10 @@ import dev.gallon.domain.GroupedKind;
 import dev.gallon.domain.HorseStats;
 import dev.gallon.domain.I18nKeys;
 import dev.gallon.domain.ModConfig;
+import dev.gallon.mixins.GuiAccessor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
@@ -19,9 +21,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DisplayService {
+    private static final int TICKS_PER_SECOND = 20;
+    private static final int MAX_OVERLAY_SECONDS = 300;
 
     public static void displayOverlayStats(@NotNull ModConfig config, @NotNull HorseStats stats) {
-        Minecraft.getInstance().gui.setOverlayMessage(buildOverlayMessage(config, stats), false);
+        Gui gui = Minecraft.getInstance().gui;
+        gui.setOverlayMessage(buildOverlayMessage(config, stats), false);
+
+        if (config.getExtendOverlayDuration()) {
+            int seconds = Math.max(1, Math.min(MAX_OVERLAY_SECONDS, config.getOverlayDurationSeconds()));
+            ((GuiAccessor) gui).setOverlayMessageTime(seconds * TICKS_PER_SECOND);
+        }
     }
 
     public static void displayContainerStats(
